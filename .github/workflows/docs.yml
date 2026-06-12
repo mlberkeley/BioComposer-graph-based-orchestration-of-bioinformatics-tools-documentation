@@ -1,0 +1,58 @@
+name: Docs
+
+# Build the Sphinx docs and deploy to GitHub Pages. This repo is PUBLIC and
+# contains docs only — the biocomposer package source lives in a separate
+# private repo. autodoc imports the package from PyPI (installed --no-deps;
+# heavy runtime deps are mocked in conf.py).
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one Pages deploy at a time.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install doc dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install biocomposer (for autodoc, no heavy deps)
+        # --no-deps: we only need the compiled package importable so autodoc can
+        # introspect it. Its runtime deps (modal -> cbor2, etc.) are mocked in
+        # conf.py, so we skip installing them (avoids the Rust/cbor2 build issue).
+        run: pip install --no-deps biocomposer
+
+      - name: Build HTML
+        # docs sources are at the repo root, output to _build/html
+        run: sphinx-build -b html . _build/html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _build/html
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

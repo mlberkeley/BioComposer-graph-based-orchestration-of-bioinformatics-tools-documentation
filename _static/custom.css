@@ -1,0 +1,87 @@
+/* biocomposer docs — light polish on top of the Furo theme. */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+/* Slightly tighter, more confident headings. */
+.content h1 { font-weight: 700; letter-spacing: -0.02em; }
+.content h2 { font-weight: 650; letter-spacing: -0.01em; margin-top: 2.2rem; }
+.content h3 { font-weight: 600; }
+
+/* Rounder, softer code blocks. */
+.highlight {
+  border-radius: 10px;
+  border: 1px solid var(--color-background-border);
+}
+.highlight pre { font-size: 0.85em; line-height: 1.6; }
+
+/* Inline code: subtle accent tint. */
+code.literal {
+  border-radius: 5px;
+  font-size: 0.85em;
+}
+
+/* Center Mermaid diagrams and give them breathing room. */
+.mermaid {
+  display: flex;
+  justify-content: center;
+  margin: 1.6rem 0;
+}
+
+/* Tables: rounded, clean separators. */
+table.docutils {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--color-background-border);
+}
+table.docutils thead th { font-weight: 650; }
+
+/* Tighten the API signature blocks a touch. */
+dl.py dt { border-radius: 6px; }
+
+/* Architecture figure: light vs dark variant chosen by theme. */
+.mg-arch { margin: 1.6rem 0; text-align: center; }
+.mg-arch img { max-width: 100%; height: auto; }
+.mg-arch figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--color-foreground-secondary);
+}
+/* Default (and explicit light): show light image, hide dark. */
+.mg-arch-dark { display: none; }
+.mg-arch-light { display: inline-block; }
+/* Explicit dark theme (Furo sets data-theme on <body>). */
+body[data-theme="dark"] .mg-arch-light { display: none; }
+body[data-theme="dark"] .mg-arch-dark  { display: inline-block; }
+/* Auto theme follows the OS setting. */
+@media (prefers-color-scheme: dark) {
+  body[data-theme="auto"] .mg-arch-light { display: none; }
+  body[data-theme="auto"] .mg-arch-dark  { display: inline-block; }
+}
+
+/* Home-page hero: centered title + tagline + authors. */
+.mg-hero {
+  text-align: center;
+  padding: 2.4rem 1rem 1.6rem;
+  margin-bottom: 1.6rem;
+  border-bottom: 1px solid var(--color-background-border);
+}
+.mg-hero-title {
+  font-weight: 800;
+  font-size: 2.1rem;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--color-brand-primary);
+  max-width: 36ch;
+  margin: 0 auto;
+}
+.mg-hero-org {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-foreground-secondary);
+  margin-top: 0.9rem;
+}
+.mg-hero-authors {
+  font-size: 0.9rem;
+  color: var(--color-foreground-muted);
+  margin-top: 0.35rem;
+}
