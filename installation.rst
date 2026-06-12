@@ -6,7 +6,11 @@ Install the package
 
 .. code-block:: bash
 
-    pip install -e .          # editable install, for development
+    pip install biocomposer
+
+This installs a precompiled wheel from PyPI. Wheels are published for CPython
+3.10–3.12 on Linux (x86_64) and macOS (Apple Silicon); ``pip`` automatically
+selects the right one for your platform.
 
 Create the working directories the CLI expects::
 
@@ -26,6 +30,7 @@ In short:
   ``ANTHROPIC_API_KEY`` / ``OPENAI_API_KEY``), connectors are LLM-generated.
 * **bv** registry client: ``cargo install biov``.
 * **Docker** running, *for local execution only*.
-* **Modal** (``pip install modal && modal setup``), *for cloud execution only*.
+* **Modal** — installed automatically with biocomposer; run ``modal setup``
+  once to authenticate, *for cloud execution only*.
 
 Then head to :doc:`running`, or see :doc:`examples` for worked pipelines.

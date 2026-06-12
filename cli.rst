@@ -2,7 +2,7 @@ Command-line interface
 ======================
 
 Pipelines are executed with the ``biocomp`` command (installed by
-``pip install -e .``).
+``pip install biocomposer``).
 
 .. code-block:: text
 
