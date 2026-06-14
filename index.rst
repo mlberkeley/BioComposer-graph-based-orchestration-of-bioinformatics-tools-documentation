@@ -133,3 +133,7 @@ See :doc:`how_it_works` for the architecture and execution model, or
 
    cli
    api
+
+
+Feel free to reach out with questions to aditya_lakshmi27@berkeley.edu or 
+arshian@berkeley.edu
