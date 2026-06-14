@@ -82,7 +82,7 @@ Package Specs
   the tools' own execution.
 - **Tools are standardized behind a registry.** Each tool is a container image plus
   a typed TOML manifest, resolved from the open `bv registry
-  <https://tejasprabhune.github.io/bv-registry/>`_ (by Tejas Prabhune TEJAS INSERT HOW YOU WANT TO BE CITED). Entries can wrap custom Docker/Apptainer images, `BioContainers
+  <https://tejasprabhune.github.io/bv-registry/>`_ (by Tejas Prabhune). Entries can wrap custom Docker/Apptainer images, `BioContainers
   <https://biocontainers.pro>`_, or `Docker Hub <https://hub.docker.com>`_ images,
   so specialized tools compose on the same footing as widely used ones.
 - **The graph carries real workflow logic.** Beyond linear chains: fan-out and
