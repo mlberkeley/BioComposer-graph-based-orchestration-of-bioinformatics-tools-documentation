@@ -41,7 +41,7 @@ deployed to GitHub Pages by the `Docs` workflow on every push to `main`.
 
 * The language model only writes the glue. It is used to generate the connector for an edge, from the two tools’ schemas and the runtime data. It does not choose the tools, run them, or interpret their results; those remain the user’s graph and the tools’ own execution.
 
-* Tools are standardized behind a registry. Each tool is a container image plus a typed TOML manifest, resolved from the open bv registry (by Tejas Prabhune). Entries can wrap custom Docker/Apptainer images, BioContainers, or Docker Hub images, so specialized tools compose on the same footing as widely used ones.
+* Tools are standardized behind a registry. Each tool is a container image plus a typed TOML manifest, resolved from the open bv registry. Entries can wrap custom Docker/Apptainer images, BioContainers, or Docker Hub images, so specialized tools compose on the same footing as widely used ones.
 
 * The graph carries real workflow logic. Beyond linear chains: fan-out and fan-in, per-item processing of collections (gather nodes), bounded feedback loops (decision nodes), and reusable sub-pipelines (subgraphs).
 
